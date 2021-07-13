@@ -15,6 +15,7 @@ class SongsService {
     const id = `song-${nanoid(16)}`;
     const insertedAt = new Date().toISOString();
 
+    // Revisi Team Reviewer DICODING
     const query = {
       text: 'INSERT INTO songs VALUES($1, $2, $3, $4, $5, $6, $7, $7) RETURNING id',
       values: [
@@ -49,6 +50,7 @@ class SongsService {
     };
     const result = await this._pool.query(query);
 
+    // Revisi rowCount untuk mempersingkat sintaks
     if (!result.rowCount) {
       throw new NotFoundError('Lagu tidak ditemukan');
     }
@@ -67,7 +69,8 @@ class SongsService {
 
     const result = await this._pool.query(query);
 
-    if (!result.rows.length) {
+    // Revisi rowCount untuk mempersingkat sintaks
+    if (!result.rowCount) {
       throw new NotFoundError('Gagal memperbarui lagu. Id tidak ditemukan');
     }
   }
@@ -80,7 +83,8 @@ class SongsService {
 
     const result = await this._pool.query(query);
 
-    if (!result.rows.length) {
+    // Revisi rowCount untuk mempersingkat sintaks
+    if (!result.rowCount) {
       throw new NotFoundError('Lagu gagal dihapus. Id tidak ditemukan');
     }
   }
